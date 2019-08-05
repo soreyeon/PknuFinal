@@ -1,0 +1,14 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<meta charset="utf-8" />
+<table>
+	<tr>
+		<c:forEach var="menu" items="${ menuList }">
+			<td style="width:100px; height:30px; text-align:center">
+				<a href="/Board/List?menu_id=${ menu.menu_id }">${ menu.menu_name }</a>
+			</td>
+		</c:forEach>
+	</tr>
+</table>
