@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Menus">
+
+	<resultMap type="com.pkfinal.main.menu.vo.MenuVo" id="menuMap">		
+		<result property="mn_id" column="MN_ID" javaType="string" />
+		<result property="mn_name" column="MN_NAME" javaType="string" />
+		<result property="mn_seq" column="MN_SEQ" javaType="int" />
+		<result property="mn_gbn" column="MN_GBN" javaType="string" />
+		<result property="mn_url" column="MN_URL" javaType="string" />
+	</resultMap>
+	
+	<select id="List" statementType="CALLABLE"
+		parameterType="hashmap" resultType="com.pkfinal.main.menu.vo.MenuVo">
+ 		{ CALL PKG_MENUS.SELECT_MENUS(
+ 			#{ m_id, 	mode=IN, jdbcType=VARCHAR },
+ 			#{ m_name, 	mode=IN, jdbcType=VARCHAR },
+ 			#{ m_seq, 	mode=IN, jdbcType=INTEGER },
+ 			#{ result, 	mode=OUT, jdbcType=CURSOR, javaType=ResultSet,
+			resultMap=menuMap }
+ 		)}
+	</select>
+	
+</mapper>
