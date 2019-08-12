@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Members">
+	<resultMap type="com.pkfinal.main.members.vo.MembersVo" id="MembersMap">
+		<result property="m_id" 		column="M_ID" 		javaType="string" />
+		<result property="c_id" 		column="C_ID" 		javaType="string" />
+		<result property="m_uid" 		column="M_UID" 		javaType="string" />
+		<result property="m_name" 		column="M_NAME" 	javaType="string" />
+		<result property="m_pwd" 		column="m_pwd" 		javaType="string" />
+		<result property="m_zipcode" 	column="m_zipcode" 	javaType="string" />
+		<result property="m_city" 		column="m_city" 	javaType="string" />
+		<result property="m_gugun" 		column="m_gugun" 	javaType="string" />
+		<result property="m_addr" 		column="m_addr" 	javaType="string" />
+		<result property="m_tel" 		column="m_tel" 		javaType="string" />
+		<result property="m_email" 		column="m_email" 	javaType="string" />
+		<result property="m_gbn" 		column="m_gbn" 		javaType="string" />
+	</resultMap>
+	
+	<insert id="Join"
+		statementType="CALLABLE"
+		parameterType="hashmap">
+		{CALL PKG_MEMBERS.PROC_MEMBERS_INSERT(
+			#{c_id,		mode=IN,	jdbcType=VARCHAR}
+			,#{m_uid,		mode=IN,	jdbcType=VARCHAR}
+			,#{m_name,		mode=IN,	jdbcType=VARCHAR}
+			,#{m_pwd,		mode=IN,	jdbcType=VARCHAR}
+			,#{m_zipcode,	mode=IN,	jdbcType=VARCHAR}
+			,#{m_city,		mode=IN,	jdbcType=VARCHAR}
+			,#{m_gugun,		mode=IN,	jdbcType=VARCHAR}
+			,#{m_addr,		mode=IN,	jdbcType=VARCHAR}
+			,#{m_tel,		mode=IN,	jdbcType=VARCHAR}
+			,#{m_email,		mode=IN,	jdbcType=VARCHAR}
+		)}
+	
+	</insert>
+	
+	<select id="IdDupCheck" 
+		parameterType="hashmap"
+		resultType="com.pkfinal.main.members.vo.MembersVo">
+		SELECT * FROM MEMBERS
+		 WHERE M_UID = #{ m_uid }
+	</select>
+	
+
+	
+
+	
+	
+	
+
+
+</mapper>
