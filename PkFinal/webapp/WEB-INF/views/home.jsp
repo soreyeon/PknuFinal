@@ -13,6 +13,6 @@
 		onclick="location.href='/Members/JoinForm/'">회원가입</button>
 	<button type="button" class="btnStyle"
 		onclick="location.href='/Map'">지도</button>
-	<a href="/Map">지도2</a>
+	<a href="/Map">지도1</a>
 </body>
 </html>
