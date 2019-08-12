@@ -9,5 +9,10 @@
 <body>
 	<h1>메인페이지</h1>
 	<a href="products">products test</a>
+	<button type="button" class="btnStyle"
+		onclick="location.href='/Members/JoinForm/'">회원가입</button>
+	<button type="button" class="btnStyle"
+		onclick="location.href='/Map'">지도</button>
+	<a href="/Map">지도2</a>
 </body>
 </html>
