@@ -1,8 +1,6 @@
 package com.pkfinal.main.centers.vo;
 
-import lombok.Data;
 
-@Data
 public class CentersVo {
 	// Fields
 	private String c_id;

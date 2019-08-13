@@ -18,7 +18,7 @@
 
 	<select id="NearCenter" 
 		parameterType="hashmap"
-		resultType="com.pkfinal.main.centers.vo.CentersVo">
+		resultMap="CentersMap">
 		SELECT *
 		 FROM CENTERS T1, CENTER_GUBUN T2
 		 WHERE  T1.C_ID = T2.C_ID	
