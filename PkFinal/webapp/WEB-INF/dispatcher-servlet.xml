@@ -47,4 +47,25 @@
    	 <property name="maxInMemorySize" value="100000000" /> 
    </bean>
 
+	<!-- Interceptor 설정 -->
+	<mvc:interceptors>
+		<!-- 공통 -->
+		<mvc:interceptor>
+			<!-- 인터셉터 대상 /** : 하위폴더 포함 모든 폴더-->
+			<mvc:mapping path="/**" /> 
+			<!-- 인터셉터 제외 목록(css, js, img) -->
+			<mvc:exclude-mapping path="/resources/**" />
+			<mvc:exclude-mapping path="/css/**" />
+			<mvc:exclude-mapping path="/img/**" />
+			<mvc:exclude-mapping path="/js/**" />
+			<mvc:exclude-mapping path="/" />
+			<mvc:exclude-mapping path="/Members/JoinForm" />
+			<mvc:exclude-mapping path="/Members/Join" />
+			<mvc:exclude-mapping path="/Members/Login" />
+			<mvc:exclude-mapping path="/Members/LoginAction" />
+			<!--  인터셉터 처리 핸들러 -->
+			<bean id="authInterceptor" class="com.pkfinal.main.members.controller.LoginInterceptor"></bean>
+		</mvc:interceptor>
+	</mvc:interceptors>
+
 </beans>

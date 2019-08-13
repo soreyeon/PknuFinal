@@ -41,6 +41,17 @@
 		 WHERE M_UID = #{ m_uid }
 	</select>
 	
+	
+	<select id="LoginAction" 
+		parameterType="hashmap"
+		resultType="com.pkfinal.main.members.vo.MembersVo">
+		SELECT * 
+		FROM MEMBERS
+		WHERE M_UID = #{ m_uid }
+		AND M_PWD = #{ m_pwd }
+		AND M_GBN = 'GBN02'
+	</select>
+	
 
 	
 
