@@ -24,4 +24,10 @@ public class MembersDaoImpl implements MembersDao {
 		return map;
 	}
 
+	@Override
+	public MembersVo loginAction(HashMap<String, Object> map) {
+		MembersVo membersVo = sqlSession.selectOne("Members.LoginAction", map);
+		return membersVo;
+	}
+
 }

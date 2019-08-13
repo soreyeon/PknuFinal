@@ -11,10 +11,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.pkfinal.main.centers.service.CentersService;
-import com.pkfinal.main.members.login.service.LoginService;
 import com.pkfinal.main.members.service.MembersService;
 import com.pkfinal.main.members.vo.MembersVo;
 
@@ -26,7 +24,46 @@ public class MembersController {
 	@Autowired
 	private CentersService centersService;
 	
+	@RequestMapping("/Members/Login")
+	public ModelAndView login(@RequestParam HashMap<String, Object> map) {
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("login");
+		return mv;
+	}
 	
+	@RequestMapping("/Members/Logout")
+	public ModelAndView logout(@RequestParam HashMap<String, Object> map, HttpSession session) {
+		
+		if(session.getAttribute("loginMember") != null) {
+			session.removeAttribute("loginMember");
+		}
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("redirect:/");
+		return mv;
+	}
+	
+	@RequestMapping("/Members/LoginAction")
+	public ModelAndView loginAction(@RequestParam HashMap<String, Object> map, HttpSession session) {
+		
+		if(session.getAttribute("loginMember") != null) {
+			session.removeAttribute("loginMember");
+		}
+		
+		ModelAndView mv = new ModelAndView();
+		
+		MembersVo member = membersService.loginAction(map);
+		
+		if(member == null) {
+			mv.setViewName("redirect:/Members/Login");
+		} else {
+			session.setAttribute("loginMember", member);
+			mv.setViewName("redirect:/");
+		}
+		
+		return mv;
+	}
 
 	
 	// 회원가입
